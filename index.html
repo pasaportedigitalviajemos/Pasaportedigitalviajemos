@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasaporte Digital Viajemos - Guía Práctica de Viaje</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuente Inter para legibilidad óptima -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #1f2937;
+        }
+        /* Animación de parpadeo y brillo suave para las estrellas del logotipo */
+        @keyframes starTwinkle {
+            0%, 100% {
+                opacity: 0.45;
+                transform: scale(0.88) rotate(-6deg);
+                filter: drop-shadow(0 0 2px rgba(230, 126, 34, 0.4));
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(6deg);
+                filter: drop-shadow(0 0 10px rgba(230, 126, 34, 0.95));
+            }
+        }
+        /* Animación suave del avión en el logotipo */
+        @keyframes planeFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(3px, -4px) rotate(4deg); }
+        }
+        .star-animated {
+            display: inline-block;
+            color: #e67e22;
+            animation: starTwinkle 1.8s infinite ease-in-out;
+        }
+        .star-delay {
+            animation-delay: 0.9s;
+        }
+        .plane-animated {
+            animation: planeFloat 3s infinite ease-in-out;
+        }
+        /* Ajuste de desplazamiento para enlaces ancla bajo el menú fijo */
+        section[id] {
+            scroll-margin-top: 4.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#0056b3] selection:text-white">
+
+    <!-- Cabecera Principal con Logotipo Ilustrado, Estrellas Animadas y Foto de Perfil en Esquina Superior -->
+    <header class="bg-gradient-to-br from-[#004494] via-[#0056b3] to-[#0066cc] text-white pt-6 pb-12 px-4 sm:py-12 shadow-md relative overflow-hidden">
+        <!-- Patrón decorativo de fondo (puntos y líneas de ruta aérea) -->
+        <svg class="absolute inset-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+            <path d="M-50,180 Q250,40 600,160 T1300,80" fill="none" stroke="#e67e22" stroke-width="3" stroke-dasharray="10,10" />
+        </svg>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+            <!-- Barra superior con Tarjeta de Perfil en la esquina superior derecha -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 pb-4 border-b border-white/15">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-blue-100 border border-white/20">
+                    <span class="w-2 h-2 rounded-full bg-[#e67e22] animate-pulse"></span>
+                    <span>Comunidad Oficial de Viajeros</span>
+                </div>
+
+                <!-- Marco de Foto de Perfil en la esquina superior -->
+                <a href="#contacto" class="group flex items-center gap-3 bg-white/15 hover:bg-white/25 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/30 shadow-lg transition-all">
+                    <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full p-0.5 bg-gradient-to-tr from-[#e67e22] via-amber-300 to-white shadow-md flex-shrink-0">
+                        <!-- Imagen de perfil con fallback elegante -->
+                        <img 
+                            src="foto-perfil.jpg" 
+                            alt="Creador de Pasaporte Digital Viajemos" 
+                            onerror="this.onerror=null; this.src='https://placehold.co/150x150/003d82/ffffff?text=Viajero+✈️';"
+                            class="w-full h-full object-cover rounded-full border-2 border-[#0056b3]"
+                        />
+                        <span class="absolute -bottom-0.5 -right-0.5 bg-[#e67e22] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0056b3] shadow">
+                            ★
+                        </span>
+                    </div>
+                    <div class="text-left pr-1">
+                        <span class="block text-[11px] uppercase tracking-wider text-amber-200 font-bold">Tu Guía Viajero</span>
+                        <span class="block text-sm font-extrabold text-white group-hover:text-amber-200 transition-colors">@pasaportedigitalviajemos</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Logotipo Central Ilustrado SVG + Título con Estrellas -->
+            <div class="text-center flex flex-col items-center">
+                <!-- Emblema SVG Pasaporte + Globo + Avión + Estrellas -->
+                <div class="mb-4 relative inline-flex items-center justify-center">
+                    <div class="absolute inset-0 bg-[#e67e22]/25 rounded-full blur-xl"></div>
+                    <svg class="w-24 h-24 sm:w-28 sm:h-28 relative z-10 drop-shadow-xl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Círculo exterior estilo sello de pasaporte -->
+                        <circle cx="60" cy="60" r="54" fill="#003d82" stroke="#e67e22" stroke-width="3" stroke-dasharray="6 4"/>
+                        <circle cx="60" cy="60" r="46" fill="#0056b3" stroke="#93c5fd" stroke-width="1.5"/>
+                        
+                        <!-- Globo terráqueo estilizado -->
+                        <circle cx="60" cy="62" r="28" fill="#0284c7" stroke="#ffffff" stroke-width="2"/>
+                        <ellipse cx="60" cy="62" rx="13" ry="28" stroke="#bae6fd" stroke-width="1.5"/>
+                        <line x1="32" y1="62" x2="88" y2="62" stroke="#bae6fd" stroke-width="1.5"/>
+                        <path d="M36 49 Q60 54 84 49" stroke="#bae6fd" stroke-width="1.5" fill="none"/>
+                        <path d="M36 75 Q60 70 84 75" stroke="#bae6fd" stroke-width="1.5" fill="none"/>
+
+                        <!-- Órbita y avión volando -->
+                        <path d="M22 76 C35 32, 85 28, 98 52" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+                        <g class="plane-animated">
+                            <path d="M96 42 L106 38 L101 48 L98 46 L94 50 L94 45 Z" fill="#ffffff" stroke="#e67e22" stroke-width="1"/>
+                        </g>
+
+                        <!-- Estrellas doradas integradas -->
+                        <polygon points="28,28 30,33 35,33 31,36 32,41 28,38 24,41 25,36 21,33 26,33" fill="#fbbf24" class="star-animated"/>
+                        <polygon points="90,82 92,86 96,86 93,89 94,93 90,90 86,93 87,89 84,86 88,86" fill="#fbbf24" class="star-animated star-delay"/>
+                    </svg>
+                </div>
+
+                <!-- Título Principal -->
+                <div class="inline-flex items-center justify-center gap-2 sm:gap-4 mb-2">
+                    <span class="star-animated text-2xl sm:text-4xl select-none" aria-hidden="true">★</span>
+                    <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight drop-shadow-sm">
+                        Pasaporte Digital Viajemos
+                    </h1>
+                    <span class="star-animated star-delay text-2xl sm:text-4xl select-none" aria-hidden="true">★</span>
+                </div>
+                <p class="text-blue-100 text-base sm:text-xl font-medium max-w-2xl mx-auto mt-1">
+                    Tu guía práctica y consejos esenciales para viajar sin estrés
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de Navegación Sticky Blanca -->
+    <nav aria-label="Navegación de secciones" class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-3 py-2.5">
+            <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-semibold">
+                <a href="#migracion" class="px-3 py-2 rounded-lg text-[#0056b3] hover:bg-blue-50 transition-colors">Normativa Migratoria</a>
+                <a href="#equipaje" class="px-3 py-2 rounded-lg text-[#0056b3] hover:bg-blue-50 transition-colors">Guía de Equipaje</a>
+                <a href="#liquidos" class="px-3 py-2 rounded-lg text-[#0056b3] hover:bg-blue-50 transition-colors">Líquidos y Baterías</a>
+                <a href="#aeropuerto" class="px-3 py-2 rounded-lg text-[#0056b3] hover:bg-blue-50 transition-colors">Paso por Aeropuerto</a>
+                <a href="#salud-dinero" class="px-3 py-2 rounded-lg text-[#0056b3] hover:bg-blue-50 transition-colors">Salud y Aduanas</a>
+                <a href="#visados" class="px-3 py-2 rounded-lg text-[#0056b3] hover:bg-blue-50 transition-colors">Visados</a>
+                <a href="#contacto" class="px-3 py-2 rounded-lg bg-[#0056b3] text-white hover:bg-[#004494] transition-colors">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal de Tarjetas Informativas -->
+    <main class="max-w-5xl mx-auto px-4 py-8 sm:py-10 space-y-8">
+
+        <!-- 1. Normativa Migratoria: ETIAS y EES -->
+        <section id="migracion" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="border-b-2 border-[#e67e22] pb-3 mb-5 flex items-center gap-3">
+                <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-bold text-lg">🛂</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-[#0056b3]">Actualidad Migratoria: ETIAS y EES</h2>
+            </div>
+            <p class="text-gray-700 mb-6 leading-relaxed">
+                El control fronterizo en el espacio Schengen se digitaliza para reforzar la seguridad y agilizar los trámites de entrada en Europa.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- Tarjeta EES -->
+                <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="text-lg font-bold text-gray-900">Sistema de Entradas y Salidas (EES)</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 border border-green-200">
+                            ● Operativo
+                        </span>
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
+                        Este sistema automatizado sustituye el sellado físico de pasaportes. Al cruzar las fronteras exteriores de la UE, los viajeros de terceros países deben registrar sus datos biométricos (huellas dactilares e imagen facial) en quioscos digitales. Se registran las fechas exactas de entrada y denegación de acceso para controlar estrictamente el límite de estancia.
+                    </p>
+                </div>
+
+                <!-- Tarjeta ETIAS -->
+                <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="text-lg font-bold text-gray-900">Autorización de Viajes (ETIAS)</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                            ⏳ Pendiente de implementación
+                        </span>
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
+                        Funcionará como una autorización de viaje electrónica previa para ciudadanos exentos de visado. No es un visado, pero será obligatorio tramitarlo online antes del viaje. Contará con un periodo de gracia inicial tras su entrada en vigor oficial.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Guía Completa de Equipaje -->
+        <section id="equipaje" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="border-b-2 border-[#e67e22] pb-3 mb-5 flex items-center gap-3">
+                <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-bold text-lg">🧳</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-[#0056b3]">Guía Completa de Equipaje</h2>
+            </div>
+            <p class="text-gray-700 mb-5 leading-relaxed">
+                Conocer las limitaciones de tu aerolínea evita sobrecostes de última hora en la puerta de embarque. Revisa siempre las dimensiones estándar:
+            </p>
+
+            <!-- Ilustración visual comparativa de medidas de equipaje -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <div class="bg-blue-50/70 border border-blue-100 rounded-xl p-4 text-center">
+                    <div class="text-3xl mb-1">🎒</div>
+                    <div class="font-bold text-[#0056b3] text-sm">Objeto Personal</div>
+                    <div class="text-xs font-extrabold text-gray-800 mt-1">40 × 30 × 20 cm</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">Bajo el asiento delantero</div>
+                </div>
+                <div class="bg-blue-50/70 border border-blue-100 rounded-xl p-4 text-center">
+                    <div class="text-3xl mb-1">🧳</div>
+                    <div class="font-bold text-[#0056b3] text-sm">Maleta de Cabina</div>
+                    <div class="text-xs font-extrabold text-gray-800 mt-1">55 × 40 × 20 cm</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">Compartimento superior (10 kg)</div>
+                </div>
+                <div class="bg-blue-50/70 border border-blue-100 rounded-xl p-4 text-center">
+                    <div class="text-3xl mb-1">🛄</div>
+                    <div class="font-bold text-[#0056b3] text-sm">Maleta Facturada</div>
+                    <div class="text-xs font-extrabold text-gray-800 mt-1">Máx. 158 cm lineales</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">Bodega del avión (23 kg)</div>
+                </div>
+            </div>
+
+            <!-- Tabla responsiva -->
+            <div class="overflow-x-auto rounded-xl border border-gray-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[#0056b3] text-white text-sm sm:text-base">
+                            <th class="p-4 font-bold">Tipo de Equipaje</th>
+                            <th class="p-4 font-bold">Medidas Estándar Habituales</th>
+                            <th class="p-4 font-bold">Peso Límite Común</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 text-sm sm:text-base">
+                        <tr class="hover:bg-blue-50/40 transition-colors">
+                            <td class="p-4 font-bold text-gray-900">Objeto Personal<br><span class="text-xs font-normal text-gray-500">(Bajo el asiento)</span></td>
+                            <td class="p-4 font-medium text-[#0056b3]">40 x 30 x 20 cm</td>
+                            <td class="p-4 text-gray-700">Generalmente incluido (debe caber bajo el asiento delantero)</td>
+                        </tr>
+                        <tr class="bg-gray-50/70 hover:bg-blue-50/40 transition-colors">
+                            <td class="p-4 font-bold text-gray-900">Equipaje de Mano<br><span class="text-xs font-normal text-gray-500">(Cabina superior)</span></td>
+                            <td class="p-4 font-medium text-[#0056b3]">55 x 40 x 20 cm<br><span class="text-xs text-gray-500">(hasta 56 x 45 x 25 cm según compañía)</span></td>
+                            <td class="p-4 text-gray-700">10 kg (Variable según tarifa contratada)</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50/40 transition-colors">
+                            <td class="p-4 font-bold text-gray-900">Equipaje Facturado<br><span class="text-xs font-normal text-gray-500">(Bodega del avión)</span></td>
+                            <td class="p-4 font-medium text-[#0056b3]">Suma máx. 158 cm<br><span class="text-xs text-gray-500">(alto + ancho + largo)</span></td>
+                            <td class="p-4 text-gray-700">23 kg (Tarifa estándar internacional)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. Líquidos, Dispositivos Electrónicos y Medicamentos -->
+        <section id="liquidos" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="border-b-2 border-[#e67e22] pb-3 mb-5 flex items-center gap-3">
+                <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-bold text-lg">🔋</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-[#0056b3]">Líquidos, Dispositivos Electrónicos y Medicamentos</h2>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Líquidos -->
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">💧 Política de Líquidos en Cabina</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Los líquidos, geles y aerosoles deben transportarse en envases individuales de máximo <strong class="text-[#0056b3]">100 ml</strong>. Todos ellos deben caber cómodamente dentro de una única bolsa de plástico transparente resellable de capacidad máxima de <strong class="text-[#0056b3]">1 litro</strong> (una bolsa por pasajero).
+                    </p>
+                </div>
+
+                <!-- Baterías -->
+                <div class="bg-blue-50/60 rounded-xl p-5 border border-blue-100">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">⚡ Baterías de Litio y Electrónica</h3>
+                    <p class="text-gray-700 mb-3">
+                        Portátiles, teléfonos y baterías externas (<em>power banks</em>) <strong>deben ir obligatoriamente en el equipaje de mano</strong> por normativa de seguridad aérea:
+                    </p>
+                    <ul class="space-y-2 text-sm sm:text-base text-gray-800">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600 font-bold">✓</span>
+                            <span><strong>Hasta 100 Wh:</strong> Permitidas en cabina sin restricción especial.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-600 font-bold">!</span>
+                            <span><strong>Entre 100 Wh y 160 Wh:</strong> Requieren autorización expresa previa de la aerolínea.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-600 font-bold">✕</span>
+                            <span><strong>Más de 160 Wh:</strong> Terminantemente prohibidas en aviones comerciales.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Medicamentos -->
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">💊 Viajar con Medicamentos</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Se recomienda llevarlos siempre en el equipaje de mano en su <strong>embalaje original</strong> junto con la <strong>receta médica y un informe facultativo</strong>, especialmente en caso de tratamientos complejos, medicamentos líquidos que superen los 100 ml o sustancias controladas para evitar retenciones en los filtros de seguridad.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Paso a Paso en el Aeropuerto -->
+        <section id="aeropuerto" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="border-b-2 border-[#e67e22] pb-3 mb-6 flex items-center gap-3">
+                <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-bold text-lg">✈️</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-[#0056b3]">Paso a Paso en el Aeropuerto</h2>
+            </div>
+
+            <ol class="space-y-4">
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#0056b3] text-white font-bold flex items-center justify-center text-sm">1</span>
+                    <div>
+                        <strong class="text-gray-900">Check-in Online:</strong>
+                        <span class="text-gray-700"> Realízalo desde casa para elegir asiento y evitar las altas penalizaciones de las aerolíneas <em>low cost</em> en el mostrador.</span>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#0056b3] text-white font-bold flex items-center justify-center text-sm">2</span>
+                    <div>
+                        <strong class="text-gray-900">Llegada al Aeropuerto:</strong>
+                        <span class="text-gray-700"> Acude con <strong>2 horas de antelación</strong> para vuelos europeos y <strong>3 horas</strong> para vuelos internacionales.</span>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#0056b3] text-white font-bold flex items-center justify-center text-sm">3</span>
+                    <div>
+                        <strong class="text-gray-900">Mostrador de Facturación:</strong>
+                        <span class="text-gray-700"> Acude solo si necesitas registrar equipaje de bodega o verificar documentación física.</span>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#0056b3] text-white font-bold flex items-center justify-center text-sm">4</span>
+                    <div>
+                        <strong class="text-gray-900">Control de Seguridad:</strong>
+                        <span class="text-gray-700"> Prepara tu tarjeta de embarque, separa la bolsa de líquidos, saca los aparatos electrónicos grandes y quítate abrigos o cinturones.</span>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#0056b3] text-white font-bold flex items-center justify-center text-sm">5</span>
+                    <div>
+                        <strong class="text-gray-900">Pasos Fronterizos (EES):</strong>
+                        <span class="text-gray-700"> Si sales o entras en el espacio Schengen, escanea tu pasaporte y datos biométricos en los quioscos automáticos.</span>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#0056b3] text-white font-bold flex items-center justify-center text-sm">6</span>
+                    <div>
+                        <strong class="text-gray-900">Zona de Embarque:</strong>
+                        <span class="text-gray-700"> Vigila las pantallas y escucha los avisos; las puertas de embarque suelen cerrar <strong>30 minutos antes</strong> de la salida.</span>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-[#e67e22] text-white font-bold flex items-center justify-center text-sm">7</span>
+                    <div>
+                        <strong class="text-gray-900">Embarque:</strong>
+                        <span class="text-gray-700"> Ten a mano tu documento de identidad o pasaporte y tu tarjeta de embarque lista para subir a bordo.</span>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- 5. Seguro Médico y Declaración de Aduanas -->
+        <section id="salud-dinero" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="border-b-2 border-[#e67e22] pb-3 mb-5 flex items-center gap-3">
+                <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-bold text-lg">🏥</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-[#0056b3]">Seguro Médico y Declaración de Aduanas</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-5 rounded-xl bg-gray-50 border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">🛡️ Seguro Médico Internacional</h3>
+                    <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                        Altamente recomendable incluso en escalas cortas. Muchos países de tránsito o destino exigen una cobertura médica mínima obligatoria para autorizar la entrada y evitar gastos hospitalarios elevados.
+                    </p>
+                </div>
+                <div class="p-5 rounded-xl bg-gray-50 border border-gray-200">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">💶 Transporte de Efectivo y Aduanas</h3>
+                    <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                        Es obligatorio declarar ante las autoridades aduaneras cualquier cantidad de dinero en efectivo, cheques o pagarés que sea igual o superior a <strong class="text-[#0056b3]">10.000 euros</strong> (o su equivalente en otra divisa) al entrar o salir de la Unión Europea.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Gestión de Visados -->
+        <section id="visados" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <div class="border-b-2 border-[#e67e22] pb-3 mb-5 flex items-center gap-3">
+                <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-blue-50 text-[#0056b3] font-bold text-lg">📑</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-[#0056b3]">Gestión de Visados</h2>
+            </div>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                Los requisitos de entrada varían según tu nacionalidad y el destino elegido. Es responsabilidad del viajero verificar con antelación si el país de destino o tránsito exige visado.
+            </p>
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-5">
+                <h3 class="font-bold text-gray-900 mb-2">Documentación habitual requerida para visados y control migratorio:</h3>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base text-gray-800">
+                    <li>• Pasaporte en vigor (mínimo 6 meses de validez)</li>
+                    <li>• Fotografías recientes tamaño carné/pasaporte</li>
+                    <li>• Justificantes de solvencia económica</li>
+                    <li>• Reservas de alojamiento confirmadas</li>
+                    <li>• Billete de vuelta o salida del país</li>
+                    <li>• Seguro médico de viaje vigente</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7. Sección de Contacto y Redes Sociales -->
+        <section id="contacto" class="bg-gradient-to-br from-blue-50 to-gray-100 rounded-2xl p-6 sm:p-10 border border-blue-200 text-center shadow-sm">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0056b3] mb-3">
+                ¡Conecta con Pasaporte Digital Viajemos!
+            </h2>
+            <p class="text-gray-700 max-w-xl mx-auto mb-6 text-base sm:text-lg">
+                Sigue nuestros consejos diarios de viaje en redes sociales o escríbenos por correo para consultas y colaboraciones:
+            </p>
+
+            <!-- Botones de Redes Sociales -->
+            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6">
+                <a href="https://www.facebook.com/share/17bQ8F9Gda/" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-[#0056b3] hover:bg-[#003d82] text-white font-bold text-base shadow-sm transition-all transform hover:-translate-y-0.5">
+                    Facebook
+                </a>
+                <a href="https://www.instagram.com/pasaportedigitalviajemos" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-[#0056b3] hover:bg-[#003d82] text-white font-bold text-base shadow-sm transition-all transform hover:-translate-y-0.5">
+                    Instagram
+                </a>
+                <a href="https://pro.tiktok.com/t/ZN9PmN7gKN4w2-bs2cb/" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-[#0056b3] hover:bg-[#003d82] text-white font-bold text-base shadow-sm transition-all transform hover:-translate-y-0.5">
+                    TikTok
+                </a>
+            </div>
+
+            <!-- Correo Electrónico -->
+            <div class="pt-4 border-t border-gray-300/70">
+                <p class="text-sm text-gray-600 mb-1">Correo electrónico directo:</p>
+                <a href="mailto:pasaportedigitalviajemos@gmail.com"
+                   class="text-base sm:text-lg font-bold text-[#0056b3] hover:text-[#e67e22] underline break-all transition-colors">
+                    pasaportedigitalviajemos@gmail.com
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-white border-t border-gray-200 py-8 px-4 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 Pasaporte Digital Viajemos. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
